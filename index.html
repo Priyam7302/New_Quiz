@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="quiz.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <button id="startQuiz">Start</button>
+      <button id="resetBtn" class="hidden"> Reset</button>
+
+      <div id="quiz" class="hidden">
+        <p class="question">Farzi Question</p>
+        <p class="text"></p>
+        <img class="imgUrl" src="">
+        <!-- <p class="answer"></p> -->
+        <p class="countdown"></p>
+        <div class="options">
+          <p class="option">Farzi Option</p>
+          <p class="option">Farzi Option</p>
+          <p class="option">Farzi Option</p>
+          <p class="option">Farzi Option</p>
+        </div>
+      </div>
+
+      <div id="score" class="hidden">
+        <p id="scorePara" class="hidden">Your score is: <span></span></p>
+        <!-- <p class="scorePara">0</p> -->
+      </div>
+    </div>
+    <!-- <button id="resetBtn" class="hidden">Reset</button> -->
+    <script src="quiz.js"></script>
+  </body>
+</html>

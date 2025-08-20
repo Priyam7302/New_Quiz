@@ -1,0 +1,131 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.hidden {
+  display: none;
+}
+.disabled {
+  pointer-events: none;
+}
+.enabled {
+  pointer-events: all;
+  background-color: transparent;
+}
+.selectedOption {
+  background-color: rgba(66, 238, 66, 1);
+  color: #fff;
+}
+#wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#startQuiz {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid rebeccapurple;
+  background-color: rebeccapurple;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+#resetBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid rebeccapurple;
+  background-color: rebeccapurple;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+} 
+
+
+.imgUrl {
+  max-width: 100%; 
+  max-height: 250px; 
+  display: block; 
+  margin: 10px auto; 
+  border-radius: 10px; 
+  object-fit: contain; 
+}
+
+/* CSS */
+/* Quiz Box */
+#quiz {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 400px;
+}
+
+.question {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.text {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.imgUrl {
+  max-width: 100%;
+  max-height: 200px;
+  display: block;
+  margin: 12px auto;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Options → HORIZONTAL */
+.options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.option {
+  flex: 1 1 45%; /* two options per row */
+  min-width: 120px;
+  padding: 10px;
+  border: 2px solid rebeccapurple;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.option:hover {
+  background-color: rebeccapurple;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Countdown */
+.countdown {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 15px 0;
+  color: crimson;
+}
+
+/* Score */
+#score {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: rebeccapurple;
+}
