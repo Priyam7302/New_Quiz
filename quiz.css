@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -44,16 +44,15 @@
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
-} 
-
+}
 
 .imgUrl {
-  max-width: 100%; 
-  max-height: 250px; 
-  display: block; 
-  margin: 10px auto; 
-  border-radius: 10px; 
-  object-fit: contain; 
+  max-width: 100%;
+  max-height: 250px;
+  display: block;
+  margin: 10px auto;
+  border-radius: 10px;
+  object-fit: contain;
 }
 
 /* CSS */
@@ -128,4 +127,40 @@
   font-size: 1.4rem;
   font-weight: bold;
   color: rebeccapurple;
+}
+
+
+
+/* Category Section */
+#category {
+  text-align: center;       /* Center the whole section */
+  margin-top: 30px;
+}
+
+#category h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: rebeccapurple;
+}
+
+/* Category boxes container */
+#category p {
+  display: inline-block;    /* Make them sit horizontally */
+  margin: 10px;
+  padding: 15px 25px;
+  border: 2px solid rebeccapurple;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: #444;
+  transition: all 0.3s ease; /* smooth hover */
+}
+
+/* Hover effect for category boxes */
+#category p:hover {
+  background-color: rebeccapurple;
+  color: #fff;
+  transform: scale(1.05);  /* slight zoom on hover */
 }

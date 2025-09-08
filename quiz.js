@@ -1,28 +1,113 @@
-const data = [
-  {
-    question: "What is 2+2?",
-    answer: "4",
-    options: [1, 2, 3, 4],
-  },
-  {
-    question: "What is the capital of South Africa?",
-    answer: "Cape Town",
-    options: ["Cape Town", "Durban", "Jo'berg", "Pretoria"],
-  },
-  {
-    question: "Where is Taj Mahal located?",
-    answer: "Agra",
-    options: ["Patna", "Lucknow", "Agra", "Jaipur"],
-  },
-  {
-    question: {
-      text: "Who discovered gravity?",
-      imgUrl: "test1.jpg",
+const quizData = {
+  coding: [
+    {
+      question: "What does HTML stand for?",
+      answer: "HyperText Markup Language",
+      options: [
+        "HighText Machine Language",
+        "HyperText Markup Language",
+        "Hyperlink Text Mark Language",
+        "None of these",
+      ],
     },
-    answer: "Isaac Newton",
-    options: ["Bill Gates", "CV Raman", "Sundar Pichai", "Isaac Newton"],
-  },
-];
+    {
+      question: "Which symbol is used for comments in JavaScript?",
+      answer: "//",
+      options: ["//", "#", "/* */", "<!-- -->"],
+    },
+    {
+      question: "What is the extension of JavaScript files?",
+      answer: ".js",
+      options: [".java", ".js", ".script", ".jsx"],
+    },
+    {
+      question: {
+        text: "Identify this programming language logo:",
+        imgUrl: "images/python.png",
+      },
+      answer: "Python",
+      options: ["Java", "C++", "Python", "JavaScript"],
+    },
+  ],
+
+  gk: [
+    {
+      question: "What is the national currency of Japan?",
+      answer: "Yen",
+      options: ["Won", "Yuan", "Yen", "Dollar"],
+    },
+    {
+      question: "Which country hosted the 2016 Summer Olympics?",
+      answer: "Brazil",
+      options: ["China", "Brazil", "Russia", "Japan"],
+    },
+    {
+      question: "Who is known as the Father of the Nation in India?",
+      answer: "Mahatma Gandhi",
+      options: ["Nehru", "Subhash Bose", "Mahatma Gandhi", "Bhagat Singh"],
+    },
+    {
+      question: {
+        text: "Identify the flag:",
+        imgUrl: "images/indiaFlag.png",
+      },
+      answer: "India",
+      options: ["India", "Nepal", "Pakistan", "Bangladesh"],
+    },
+  ],
+
+  sports: [
+    {
+      question: "How many players are there in a basketball team?",
+      answer: "5",
+      options: ["6", "5", "7", "11"],
+    },
+    {
+      question: "Who is called the 'God of Cricket'?",
+      answer: "Sachin Tendulkar",
+      options: ["Virat Kohli", "Ricky Ponting", "Sachin Tendulkar", "MS Dhoni"],
+    },
+    {
+      question: "Which country has won the most FIFA World Cups?",
+      answer: "Brazil",
+      options: ["Brazil", "Germany", "Italy", "Argentina"],
+    },
+    {
+      question: {
+        text: "Whose jersey number is shown?",
+        imgUrl: "images/MsDhoni.jpg",
+      },
+      answer: "MS Dhoni",
+      options: ["Virat Kohli", "MS Dhoni", "Sachin Tendulkar", "Rohit Sharma"],
+    },
+  ],
+
+  science: [
+    {
+      question: "What is the chemical symbol of gold?",
+      answer: "Au",
+      options: ["Ag", "Au", "Pb", "Pt"],
+    },
+    {
+      question: "What is the hardest natural substance on Earth?",
+      answer: "Diamond",
+      options: ["Iron", "Diamond", "Graphite", "Quartz"],
+    },
+    {
+      question: "Which gas is used by plants in photosynthesis?",
+      answer: "Carbon Dioxide",
+      options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+    },
+    {
+      question: {
+        text: "Which planet is called the Red Planet?",
+        imgUrl: "images/Mars.jpg",
+      },
+      answer: "Mars",
+      options: ["Jupiter", "Venus", "Mars", "Saturn"],
+    },
+  ],
+};
 
 const startQuizBtn = document.querySelector("#startQuiz");
 const quizDiv = document.querySelector("#quiz");
@@ -36,6 +121,11 @@ const scorePara = document.querySelector("#scorePara"); //selecting score para
 const spanOfPara = document.querySelector("span"); //selecting score span
 // const answerPara = document.querySelector(".answer"); ///selecting answer para
 const resetBtn = document.querySelector("#resetBtn"); //selecting resetBtn
+const category = document.querySelector("#category");
+
+const coding = document.createElement("p");
+const sports = document.createElement("p");
+const Gk = document.createElement("p");
 
 let interval;
 let countdown = 5;
@@ -45,14 +135,62 @@ let index = 0;
 let quesArr = [];
 let newArr = [];
 
-startQuizBtn.addEventListener("click", initialize);
+// startQuizBtn.addEventListener("click", initialize);
+startQuizBtn.addEventListener("click", showCategory);
+
 resetBtn.addEventListener("click", runAgain);
 
-function initialize() {
+function showCategory() {
+  startQuizBtn.classList.add("hidden");
+  category.classList.remove("hidden");
+  console.log("Categories");
+
+  category.appendChild(coding);
+  coding.innerText = "Coding";
+
+  category.appendChild(sports);
+  sports.innerText = "Sports";
+
+  category.appendChild(Gk);
+  Gk.innerText = "GK";
+}
+// coding.addEventListener("click",  initialize());
+// sports.addEventListener("click", initialize());
+// Gk.addEventListener("click", initialize());
+coding.addEventListener("click", () => initialize("coding"));
+sports.addEventListener("click", () => initialize("sports"));
+Gk.addEventListener("click", () => initialize("gk"));
+// function showCategory() {
+//   startQuizBtn.classList.add("hidden");
+//   category.classList.remove("hidden");
+
+//   const categories = ["Coding", "Sports", "GK"];
+
+//   for (let i = 0; i < categories.length; i++) {
+//     const div = document.createElement("div");
+//     div.innerText = categories[i];
+//     category.appendChild(div);
+//   }
+
+// }
+
+// function initialize() {
+//   category.classList.add("hidden");
+//   startQuizBtn.classList.add("hidden");
+//   quizDiv.classList.remove("hidden");
+//   generateRandomOrder(); // generate fresh random order of questions
+//   startQuiz(); //populate first question
+// }
+function initialize(categoryName) {
+  category.classList.add("hidden");
   startQuizBtn.classList.add("hidden");
   quizDiv.classList.remove("hidden");
-  generateRandomOrder(); // generate fresh random order of questions
-  startQuiz(); //populate first question
+
+  // choose dataset based on category
+  data = quizData[categoryName];
+
+  generateRandomOrder();
+  startQuiz();
 }
 
 function getRandomNumber() {
@@ -80,8 +218,9 @@ function generateRandomOrder() {
 function startQuiz() {
   printQuestionAndOptions(); //print first question instantly
   countdownPara.innerText = countdown;
-  countdown--;
+  console.log(countdownPara.innerText);
 
+  countdown--;
   //Start the interval which will change the question periodically
   interval = setInterval(runTheQuiz, 1000);
 }
@@ -104,11 +243,13 @@ function runTheQuiz() {
       //5 SECONDS UP, CHANGE THE QUESTION
       countdown = 5;
       countdownPara.innerText = countdown;
+      console.log(countdownPara.innerText);
       countdown--;
       printQuestionAndOptions();
     }
   } else {
     countdownPara.innerText = countdown;
+    console.log(countdownPara.innerText);
     countdown--;
   }
 }
